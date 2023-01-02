@@ -10,10 +10,15 @@ import {
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   Typography,
 } from '@mui/material';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import ArticleIcon from '@mui/icons-material/Article';
 import { Anchor } from '@mui/icons-material';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
@@ -49,6 +54,14 @@ export default function TemporaryDrawer() {
 
   const handleGitHub = () => {
     window.open('https://github.com/kotonn', '_blank');
+  };
+
+  const articleOne = () => {
+    window.open('https://qiita.com/kotonn/items/d01dd2e38f692b733f95', '_blank');
+  };
+
+  const articleTwo = () => {
+    window.open('https://qiita.com/kotonn/items/5883bf8fbd85a5e1f1e6', '_blank');
   };
 
   const profile = (anchor: Anchor) => (
@@ -289,7 +302,47 @@ export default function TemporaryDrawer() {
       }}
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-    ></Box>
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: { xs: 'center', md: 'none' },
+          flexDirection: { xs: 'column', md: 'row' },
+          height: '90vh',
+          width: '90vw',
+        }}
+      >
+        <List component='nav' aria-label='main mailbox folders'>
+          <ListItemButton onClick={articleOne}>
+            <ListItemIcon>
+              <ArticleIcon sx={{ fontSize: { md: 50 }, ml: { xs: 2 }, mb: { xs: 2 } }} />
+            </ListItemIcon>
+            <ListItemText
+              disableTypography
+              primary={
+                <Typography sx={{ fontSize: { md: 25 }, ml: { md: 5 }, mb: { xs: 2 } }}>
+                  LAMP + Wordpressの環境構築とサイトのhttps化(第1編)
+                </Typography>
+              }
+            />
+          </ListItemButton>
+          <ListItemButton onClick={articleTwo}>
+            <ListItemIcon>
+              <ArticleIcon sx={{ fontSize: { md: 50 }, ml: { xs: 2 }, mb: { xs: 2 } }} />
+            </ListItemIcon>
+            <ListItemText
+              disableTypography
+              primary={
+                <Typography sx={{ fontSize: { md: 25 }, ml: { md: 5 }, mb: { xs: 2 } }}>
+                  LAMP + Wordpressの環境構築とサイトのhttps化(第2編)
+                </Typography>
+              }
+            />
+          </ListItemButton>
+        </List>
+      </Box>
+    </Box>
   );
 
   return (
