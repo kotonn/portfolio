@@ -3,14 +3,14 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     background: {
-      default: '#f5f5f5',
+      default: '#eeeeee',
     },
   },
   breakpoints: {
     values: {
       xs: 0,
       sm: 400,
-      md: 800,
+      md: 750,
       lg: 1200,
       xl: 1600,
     },
