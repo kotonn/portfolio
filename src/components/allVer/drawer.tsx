@@ -1,9 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import {
+  BottomNavigation,
+  BottomNavigationAction,
   CardMedia,
   IconButton,
   ImageList,
@@ -11,6 +12,8 @@ import {
   ImageListItemBar,
   Typography,
 } from '@mui/material';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { Anchor } from '@mui/icons-material';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
@@ -37,6 +40,16 @@ export default function TemporaryDrawer() {
 
       setState({ ...state, [anchor]: open });
     };
+
+  const [value, setValue] = React.useState(0);
+
+  const handleTwitter = () => {
+    window.open('https://twitter.com/miyamogram', '_blank');
+  };
+
+  const handleGitHub = () => {
+    window.open('https://github.com/kotonn', '_blank');
+  };
 
   const profile = (anchor: Anchor) => (
     <Box
@@ -156,7 +169,7 @@ export default function TemporaryDrawer() {
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
+              image={`${item.img}?w=248&fit=crop&auto=format`}
               srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading='lazy'
@@ -237,7 +250,35 @@ export default function TemporaryDrawer() {
       }}
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-    ></Box>
+    >
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(_event, newValue) => {
+          setValue(newValue);
+        }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: { xs: 'center', md: 'none' },
+          flexDirection: { xs: 'column', md: 'row' },
+          height: '90vh',
+          width: '90vw',
+        }}
+      >
+        <BottomNavigationAction
+          label='Twitter'
+          icon={<TwitterIcon sx={{ fontSize: { xs: 30, md: 50, xl: 60 } }} />}
+          onClick={handleTwitter}
+          sx={{ mb: { xs: -50, md: 0 } }}
+        />
+        <BottomNavigationAction
+          label='GitHub'
+          icon={<GitHubIcon sx={{ fontSize: { xs: 30, md: 50, xl: 60 } }} />}
+          onClick={handleGitHub}
+        />
+      </BottomNavigation>
+    </Box>
   );
 
   const blog = (anchor: Anchor) => (
