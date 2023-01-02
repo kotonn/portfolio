@@ -1,9 +1,16 @@
-/* eslint-disable react/jsx-key */
+/* eslint-disable @next/next/no-img-element */
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import { CardMedia, Typography } from '@mui/material';
+import {
+  CardMedia,
+  IconButton,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  Typography,
+} from '@mui/material';
 import { Anchor } from '@mui/icons-material';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
@@ -31,7 +38,7 @@ export default function TemporaryDrawer() {
       setState({ ...state, [anchor]: open });
     };
 
-  const list = (anchor: Anchor) => (
+  const profile = (anchor: Anchor) => (
     <Box
       sx={{
         height: '90vh',
@@ -136,6 +143,114 @@ export default function TemporaryDrawer() {
     </Box>
   );
 
+  const works = (anchor: Anchor) => (
+    <Box
+      sx={{
+        height: '90vh',
+        width: '90vw',
+      }}
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <ImageList sx={{ width: '100%', height: 'auto' }}>
+        {itemData.map((item) => (
+          <ImageListItem key={item.img}>
+            <img
+              src={`${item.img}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              alt={item.title}
+              loading='lazy'
+            />
+            <ImageListItemBar
+              title={item.title}
+              actionIcon={
+                <IconButton
+                  sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                  aria-label={`info about ${item.title}`}
+                ></IconButton>
+              }
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+    </Box>
+  );
+
+  const itemData = [
+    {
+      img: 'test.jpg',
+      title: '1',
+      rows: 2,
+      cols: 2,
+      featured: true,
+    },
+    {
+      img: 'test.jpg',
+      title: '2',
+    },
+    {
+      img: 'test.jpg',
+      title: '3',
+    },
+    {
+      img: 'test.jpg',
+      title: '4',
+      cols: 2,
+    },
+    {
+      img: 'test.jpg',
+      title: '5',
+      cols: 2,
+    },
+    {
+      img: 'test.jpg',
+      title: '6',
+      rows: 2,
+      cols: 2,
+      featured: true,
+    },
+    {
+      img: 'test.jpg',
+      title: '7',
+    },
+    {
+      img: 'test.jpg',
+      title: '8',
+    },
+    {
+      img: 'test.jpg',
+      title: '9',
+      rows: 2,
+      cols: 2,
+    },
+    {
+      img: 'test.jpg',
+      title: '10',
+    },
+  ];
+
+  const sns = (anchor: Anchor) => (
+    <Box
+      sx={{
+        height: '90vh',
+        width: '90vw',
+      }}
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    ></Box>
+  );
+
+  const blog = (anchor: Anchor) => (
+    <Box
+      sx={{
+        height: '90vh',
+        width: '90vw',
+      }}
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    ></Box>
+  );
+
   return (
     <Box
       sx={{
@@ -155,12 +270,12 @@ export default function TemporaryDrawer() {
           </Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {anchor == 'top'
-              ? list(anchor)
+              ? profile(anchor)
               : anchor == 'left'
-              ? 'B'
+              ? works(anchor)
               : anchor == 'right'
-              ? 'C'
-              : 'D'}
+              ? sns(anchor)
+              : blog(anchor)}
           </Drawer>
         </React.Fragment>
       ))}
