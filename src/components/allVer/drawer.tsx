@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable jsx-a11y/alt-text */
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -101,6 +103,7 @@ export default function TemporaryDrawer() {
               height: { xs: 300, sm: 300, md: 500, lg: 500, xl: 600 },
               width: { xs: 200, sm: '100%', md: 400, lg: 400, xl: 500 },
               mt: { xs: 20, md: 'auto' },
+              borderRadius: { xs: '5%', md: '10%' },
             }}
           />
         </Box>
@@ -181,12 +184,7 @@ export default function TemporaryDrawer() {
       <ImageList sx={{ width: '100%', height: 'auto' }}>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
-            <img
-              image={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.title}
-              loading='lazy'
-            />
+            <CardMedia component='img' image={item.img} alt='testPhoto' />
             <ImageListItemBar
               title={item.title}
               actionIcon={
