@@ -125,7 +125,7 @@ export default function TemporaryDrawer() {
               学部: 国際学部
             </Typography>
             <Typography gutterBottom sx={{ fontSize: { xs: 10, sm: 10, md: 15, lg: 15, xl: 20 } }}>
-              卒業年度: 1025年 3月
+              卒業年度: 2025年 3月
             </Typography>
             <br />
             <br />
@@ -135,17 +135,17 @@ export default function TemporaryDrawer() {
               ◇経歴
             </Typography>
             <Typography gutterBottom sx={{ fontSize: { xs: 10, sm: 10, md: 15, lg: 15, xl: 20 } }}>
-              ・ 1021年4月 関西学院大学国際学部
+              ・ 2021年4月 関西学院大学国際学部
               <br />
-              ・ 1021年8月 学生起業論修了
+              ・ 2021年8月 学生起業論修了
               <br />
-              ・ 1021年9月 STARTUP ACADEMY
+              ・ 2021年9月 STARTUP ACADEMY
               <br />
-              ・ 1022年4月 Tech.Uni入会
+              ・ 2022年4月 Tech.Uni入会
               <br />
-              ・ 1022年10月 CS50入校
+              ・ 2022年10月 CS50入校
               <br />
-              ・ 1022年10月 アイクラフト株式会社
+              ・ 2022年10月 アイクラフト株式会社
               <br />
             </Typography>
             <br />
